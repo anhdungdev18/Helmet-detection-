@@ -2,7 +2,7 @@
 
 Dự án này được xây dựng để phát hiện mũ bảo hộ trong hình ảnh và video bằng mô hình YOLOv8. Chương trình nhận đường dẫn tới thư mục đầu vào, thực hiện nhận diện trên toàn bộ tệp hình ảnh và video, sau đó lưu kết quả đã được vẽ bounding box cùng thông tin phát hiện vào thư mục đầu ra.
 
-<img src="https://github.com/meryemsakin/helmet-detection/blob/main/allresults.jpeg" width="1000" height="700">
+<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/allresults.jpeg" width="1000" height="700">
 
 ## Mục Tiêu Dự Án
 
@@ -34,13 +34,13 @@ python main.py <đường-dẫn-thư-mục-chứa-hình-ảnh>
 
 ## Chỉ Số Đánh Giá
 
-![Accuracy](https://github.com/meryemsakin/helmet-detection/blob/main/graph.png)
+![Accuracy](https://github.com/anhdungdev18/Helmet-detection-/blob/main/graph.png)
 
 ## Ma Trận Nhầm Lẫn
 
 Ma trận nhầm lẫn giúp đánh giá tổng quan hiệu năng của mô hình. Hình bên dưới là ma trận nhầm lẫn của mô hình phát hiện mũ bảo hộ:
 
-![cm](https://github.com/meryemsakin/helmet-detection/blob/main/cmatrix.png)
+![cm](https://github.com/anhdungdev18/Helmet-detection-/blob/main/cmatrix.png)
 
 ## Hạn Chế Và Hướng Cải Thiện
 
@@ -54,8 +54,8 @@ Dự án cung cấp nền tảng cơ bản để phát hiện mũ bảo hộ tro
 
 ## Kết Quả Mẫu
 
-<img src="https://github.com/meryemsakin/helmet-detection/blob/main/Result/floor_1/images/hard_hat_workers42.png" width="500" height="500">
+<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/Result/floor_1/images/hard_hat_workers42.png" width="500" height="500">
 
-<img src="https://github.com/meryemsakin/helmet-detection/blob/main/Result/floor_1/images/image_6.jpg" width="500" height="500">
+<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/Result/floor_1/images/image_6.jpg" width="500" height="500">
 
-<img src="https://github.com/meryemsakin/helmet-detection/blob/main/Result/floor_1/images/image_7.jpg" width="500" height="500">
+<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/Result/floor_1/images/image_7.jpg" width="500" height="500">
