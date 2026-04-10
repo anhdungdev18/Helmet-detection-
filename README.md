@@ -1,60 +1,58 @@
-## Helmet-Detection
+# Phat Hien Mu Bao Ho Bang YOLOv8
 
-This project aims to detect helmets in images and videos using the YOLOv8 object detection algorithm. It provides a script that takes a folder path as input, detects helmets in all the images and videos within that folder, and saves annotated images and a CSV file with detection information in an output folder.
+Du an nay duoc xay dung de phat hien mu bao ho trong hinh anh va video bang mo hinh YOLOv8. Chuong trinh nhan duong dan toi thu muc dau vao, thuc hien nhan dien tren toan bo tep hinh anh va video, sau do luu ket qua da duoc ve bounding box cung thong tin phat hien vao thu muc dau ra.
 
 <img src="https://github.com/meryemsakin/helmet-detection/blob/main/allresults.jpeg" width="1000" height="700">
 
-## Project Objective:
+## Muc Tieu Du An
 
-The objective of this project is to detect helmets in images and videos using the YOLOv8 object detection algorithm. The project workflow involves loading the pre-trained YOLOv8 model, resizing input frames, passing them through the model for object detection, visualizing the detections, and storing the results in annotated images and a CSV file.
+Muc tieu cua du an la phat hien mu bao ho trong hinh anh va video bang thuat toan phat hien doi tuong YOLOv8. Quy trinh chinh gom viec nap mo hinh da huan luyen, thay doi kich thuoc khung hinh dau vao, chay suy luan, truc quan hoa ket qua va luu anh da gan nhan cung tep CSV chua thong tin phat hien.
 
+```bash
+python main.py <duong-dan-thu-muc-chua-hinh-anh>
 ```
-python main.py <folder-path-containing-images>
-```
 
-## Tools Used:
+## Cong Cu Su Dung
 
-1. Python Programming Language
-2. OpenCV (Open Source Computer Vision Library) - to work with images and videos
-3. YOLOv8 (You Only Look Once) Model - to detect objects in images and videos
-4. Supervision (Python Package) - to visualize object detection and annotations
-5. Ultralytics (Python Package) - to use the YOLO model
+1. Python
+2. OpenCV - xu ly hinh anh va video
+3. YOLOv8 - mo hinh phat hien doi tuong
+4. Supervision - truc quan hoa ket qua nhan dien va annotation
+5. Ultralytics - thu vien de su dung mo hinh YOLO
 
-## Project Workflow:
+## Quy Trinh Hoat Dong
 
-1. Load the pre-trained YOLOv8 model for helmet detection.
-2. Read input images or videos and resize the frames to the required size.
-3. Pass the resized frames through the YOLOv8 model to obtain the detected objects and their positions.
-4. Use the Supervision package to visualize the detections on the images.
-5. Store the resulting annotated images in a separate folder.
-6. Extract the labels of the detections from the YOLOv8 results.
-7. Evaluate the detections and generate a confusion matrix.
-8. Calculate accuracy and loss metrics and plot them using graphs.
-9. Store the generated graphs, along with the CSV file containing detection information, in the output folder.
+1. Nap mo hinh YOLOv8 da duoc huan luyen de phat hien mu bao ho.
+2. Doc hinh anh hoac video dau vao va thay doi kich thuoc khung hinh theo yeu cau.
+3. Dua du lieu dau vao qua mo hinh de lay cac doi tuong duoc phat hien va toa do cua chung.
+4. Su dung thu vien Supervision de ve ket qua phat hien len hinh anh.
+5. Luu cac anh da duoc gan nhan vao thu muc rieng.
+6. Trich xuat nhan cua cac doi tuong tu ket qua YOLOv8.
+7. Danh gia ket qua va tao ma tran nham lan.
+8. Tinh toan cac chi so nhu do chinh xac va loss, sau do ve bieu do.
+9. Luu bieu do va tep CSV chua thong tin phat hien vao thu muc ket qua.
 
-## Metrics
+## Chi So Danh Gia
 
 ![Accuracy](https://github.com/meryemsakin/helmet-detection/blob/main/graph.png)
 
-## Confusion Matrix
-The confusion matrix provides a comprehensive evaluation of the model's performance. Here is the confusion matrix for the helmet detection model:
+## Ma Tran Nham Lan
+
+Ma tran nham lan giup danh gia tong quan hieu nang cua mo hinh. Hinh ben duoi la ma tran nham lan cua mo hinh phat hien mu bao ho:
 
 ![cm](https://github.com/meryemsakin/helmet-detection/blob/main/cmatrix.png)
 
-## Limitations and Potential Improvements:
+## Han Che Va Huong Cai Thien
 
-1. The model may not be accurate in all situations, and there may be false positives and false negatives. One way to improve the accuracy is to fine-tune the model on a larger and more diverse dataset.
-2. The current implementation only detects helmets, but it could be extended to detect other safety equipment such as safety glasses or gloves.
-3. The current implementation only works with images and videos, but it could be extended to work with live camera feeds.
-    
-    
+1. Mo hinh co the chua chinh xac trong moi tinh huong va van co kha nang xuat hien false positive hoac false negative. Co the cai thien bang cach fine-tune tren tap du lieu lon hon va da dang hon.
+2. Phien ban hien tai chi phat hien mu bao ho, nhung co the mo rong de nhan dien them kinh bao ho, gang tay hoac cac trang bi an toan khac.
+3. Chuong trinh hien tai chi hoat dong voi hinh anh va video, nhung co the phat trien them de ho tro luong camera truc tiep.
 
-## Conclusion:
+## Ket Luan
 
-In conclusion, your project involved detecting helmets in images and videos using a YOLO model. You used Python, OpenCV, YOLO, Supervision, and Ultralytics to implement the solution. The project workflow involved loading the YOLO model, reading the input images or video frames, passing them through the model, visualizing the detections, checking whether each person is wearing a helmet or not, and storing the results in a CSV file. There are potential improvements that could be made to the project, but overall it provides a good foundation for detecting safety equipment in images and videos.# helmet-detection
+Du an cung cap nen tang co ban de phat hien mu bao ho trong hinh anh va video bang YOLO. Qua trinh xu ly bao gom nap mo hinh, doc du lieu dau vao, suy luan, truc quan hoa ket qua, kiem tra xem nguoi lao dong co doi mu hay khong va luu thong tin vao tep CSV. Tuy van con kha nang cai thien, du an da dap ung tot muc tieu nhan dien trang bi an toan co ban.
 
-
-## Results
+## Ket Qua Mau
 
 <img src="https://github.com/meryemsakin/helmet-detection/blob/main/Result/floor_1/images/hard_hat_workers42.png" width="500" height="500">
 
