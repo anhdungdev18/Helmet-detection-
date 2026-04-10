@@ -1,58 +1,58 @@
-# Phat Hien Mu Bao Ho Bang YOLOv8
+# Phát Hiện Mũ Bảo Hộ Bằng YOLOv8
 
-Du an nay duoc xay dung de phat hien mu bao ho trong hinh anh va video bang mo hinh YOLOv8. Chuong trinh nhan duong dan toi thu muc dau vao, thuc hien nhan dien tren toan bo tep hinh anh va video, sau do luu ket qua da duoc ve bounding box cung thong tin phat hien vao thu muc dau ra.
+Dự án này được xây dựng để phát hiện mũ bảo hộ trong hình ảnh và video bằng mô hình YOLOv8. Chương trình nhận đường dẫn tới thư mục đầu vào, thực hiện nhận diện trên toàn bộ tệp hình ảnh và video, sau đó lưu kết quả đã được vẽ bounding box cùng thông tin phát hiện vào thư mục đầu ra.
 
 <img src="https://github.com/meryemsakin/helmet-detection/blob/main/allresults.jpeg" width="1000" height="700">
 
-## Muc Tieu Du An
+## Mục Tiêu Dự Án
 
-Muc tieu cua du an la phat hien mu bao ho trong hinh anh va video bang thuat toan phat hien doi tuong YOLOv8. Quy trinh chinh gom viec nap mo hinh da huan luyen, thay doi kich thuoc khung hinh dau vao, chay suy luan, truc quan hoa ket qua va luu anh da gan nhan cung tep CSV chua thong tin phat hien.
+Mục tiêu của dự án là phát hiện mũ bảo hộ trong hình ảnh và video bằng thuật toán phát hiện đối tượng YOLOv8. Quy trình chính gồm việc nạp mô hình đã huấn luyện, thay đổi kích thước khung hình đầu vào, chạy suy luận, trực quan hóa kết quả và lưu ảnh đã gán nhãn cùng tệp CSV chứa thông tin phát hiện.
 
 ```bash
-python main.py <duong-dan-thu-muc-chua-hinh-anh>
+python main.py <đường-dẫn-thư-mục-chứa-hình-ảnh>
 ```
 
-## Cong Cu Su Dung
+## Công Cụ Sử Dụng
 
 1. Python
-2. OpenCV - xu ly hinh anh va video
-3. YOLOv8 - mo hinh phat hien doi tuong
-4. Supervision - truc quan hoa ket qua nhan dien va annotation
-5. Ultralytics - thu vien de su dung mo hinh YOLO
+2. OpenCV - xử lý hình ảnh và video
+3. YOLOv8 - mô hình phát hiện đối tượng
+4. Supervision - trực quan hóa kết quả nhận diện và annotation
+5. Ultralytics - thư viện để sử dụng mô hình YOLO
 
-## Quy Trinh Hoat Dong
+## Quy Trình Hoạt Động
 
-1. Nap mo hinh YOLOv8 da duoc huan luyen de phat hien mu bao ho.
-2. Doc hinh anh hoac video dau vao va thay doi kich thuoc khung hinh theo yeu cau.
-3. Dua du lieu dau vao qua mo hinh de lay cac doi tuong duoc phat hien va toa do cua chung.
-4. Su dung thu vien Supervision de ve ket qua phat hien len hinh anh.
-5. Luu cac anh da duoc gan nhan vao thu muc rieng.
-6. Trich xuat nhan cua cac doi tuong tu ket qua YOLOv8.
-7. Danh gia ket qua va tao ma tran nham lan.
-8. Tinh toan cac chi so nhu do chinh xac va loss, sau do ve bieu do.
-9. Luu bieu do va tep CSV chua thong tin phat hien vao thu muc ket qua.
+1. Nạp mô hình YOLOv8 đã được huấn luyện để phát hiện mũ bảo hộ.
+2. Đọc hình ảnh hoặc video đầu vào và thay đổi kích thước khung hình theo yêu cầu.
+3. Đưa dữ liệu đầu vào qua mô hình để lấy các đối tượng được phát hiện và tọa độ của chúng.
+4. Sử dụng thư viện Supervision để vẽ kết quả phát hiện lên hình ảnh.
+5. Lưu các ảnh đã được gán nhãn vào thư mục riêng.
+6. Trích xuất nhãn của các đối tượng từ kết quả YOLOv8.
+7. Đánh giá kết quả và tạo ma trận nhầm lẫn.
+8. Tính toán các chỉ số như độ chính xác và loss, sau đó vẽ biểu đồ.
+9. Lưu biểu đồ và tệp CSV chứa thông tin phát hiện vào thư mục kết quả.
 
-## Chi So Danh Gia
+## Chỉ Số Đánh Giá
 
 ![Accuracy](https://github.com/meryemsakin/helmet-detection/blob/main/graph.png)
 
-## Ma Tran Nham Lan
+## Ma Trận Nhầm Lẫn
 
-Ma tran nham lan giup danh gia tong quan hieu nang cua mo hinh. Hinh ben duoi la ma tran nham lan cua mo hinh phat hien mu bao ho:
+Ma trận nhầm lẫn giúp đánh giá tổng quan hiệu năng của mô hình. Hình bên dưới là ma trận nhầm lẫn của mô hình phát hiện mũ bảo hộ:
 
 ![cm](https://github.com/meryemsakin/helmet-detection/blob/main/cmatrix.png)
 
-## Han Che Va Huong Cai Thien
+## Hạn Chế Và Hướng Cải Thiện
 
-1. Mo hinh co the chua chinh xac trong moi tinh huong va van co kha nang xuat hien false positive hoac false negative. Co the cai thien bang cach fine-tune tren tap du lieu lon hon va da dang hon.
-2. Phien ban hien tai chi phat hien mu bao ho, nhung co the mo rong de nhan dien them kinh bao ho, gang tay hoac cac trang bi an toan khac.
-3. Chuong trinh hien tai chi hoat dong voi hinh anh va video, nhung co the phat trien them de ho tro luong camera truc tiep.
+1. Mô hình có thể chưa chính xác trong mọi tình huống và vẫn có khả năng xuất hiện false positive hoặc false negative. Có thể cải thiện bằng cách fine-tune trên tập dữ liệu lớn hơn và đa dạng hơn.
+2. Phiên bản hiện tại chỉ phát hiện mũ bảo hộ, nhưng có thể mở rộng để nhận diện thêm kính bảo hộ, găng tay hoặc các trang bị an toàn khác.
+3. Chương trình hiện tại chỉ hoạt động với hình ảnh và video, nhưng có thể phát triển thêm để hỗ trợ luồng camera trực tiếp.
 
-## Ket Luan
+## Kết Luận
 
-Du an cung cap nen tang co ban de phat hien mu bao ho trong hinh anh va video bang YOLO. Qua trinh xu ly bao gom nap mo hinh, doc du lieu dau vao, suy luan, truc quan hoa ket qua, kiem tra xem nguoi lao dong co doi mu hay khong va luu thong tin vao tep CSV. Tuy van con kha nang cai thien, du an da dap ung tot muc tieu nhan dien trang bi an toan co ban.
+Dự án cung cấp nền tảng cơ bản để phát hiện mũ bảo hộ trong hình ảnh và video bằng YOLO. Quá trình xử lý bao gồm nạp mô hình, đọc dữ liệu đầu vào, suy luận, trực quan hóa kết quả, kiểm tra xem người lao động có đội mũ hay không và lưu thông tin vào tệp CSV. Tuy vẫn còn khả năng cải thiện, dự án đã đáp ứng tốt mục tiêu nhận diện trang bị an toàn cơ bản.
 
-## Ket Qua Mau
+## Kết Quả Mẫu
 
 <img src="https://github.com/meryemsakin/helmet-detection/blob/main/Result/floor_1/images/hard_hat_workers42.png" width="500" height="500">
 
