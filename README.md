@@ -1,56 +1,75 @@
 # Phát Hiện Mũ Bảo Hộ Bằng YOLOv8
 
-Dự án này được xây dựng để phát hiện mũ bảo hộ trong hình ảnh và video bằng mô hình YOLOv8. Chương trình nhận đường dẫn tới thư mục đầu vào, thực hiện nhận diện trên toàn bộ tệp hình ảnh và video, sau đó lưu kết quả đã được vẽ bounding box cùng thông tin phát hiện vào thư mục đầu ra.
+Dự án này được xây dựng để phát hiện mũ bảo hộ trong hình ảnh và video bằng mô hình YOLOv8. Hệ thống hỗ trợ xử lý theo lô, trực quan hóa kết quả bằng bounding box và xuất báo cáo CSV để phục vụ bài toán giám sát an toàn lao động.
 
 <img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/allresults.jpeg" width="1000" height="700">
 
 ## Mục Tiêu Dự Án
 
-Mục tiêu của dự án là phát hiện mũ bảo hộ trong hình ảnh và video bằng thuật toán phát hiện đối tượng YOLOv8. Quy trình chính gồm việc nạp mô hình đã huấn luyện, thay đổi kích thước khung hình đầu vào, chạy suy luận, trực quan hóa kết quả và lưu ảnh đã gán nhãn cùng tệp CSV chứa thông tin phát hiện.
+- Phát hiện mũ bảo hộ trong ảnh và video bằng mô hình YOLOv8 đã huấn luyện.
+- Hỗ trợ suy luận trên thư mục ảnh hoặc tệp video đầu vào.
+- Lưu ảnh và video đã annotate cùng báo cáo CSV chứa trạng thái phát hiện.
+- Cung cấp notebook thử nghiệm và web demo để trình bày kết quả.
+
+## Công Nghệ Sử Dụng
+
+- Python
+- YOLOv8 / Ultralytics
+- OpenCV
+- Supervision
+- Gradio
+- PyTorch
+
+## Cấu Trúc Chính
+
+- `main.py`: Chạy suy luận cho thư mục ảnh hoặc video đầu vào.
+- `app.py`: Web demo bằng Gradio cho ảnh và video.
+- `models/`: Chứa trọng số YOLO đã huấn luyện.
+- `test_images/`: Ảnh và video mẫu để kiểm thử.
+- `Result/`: Kết quả suy luận đã được lưu ra.
+- `helmet-detection-yolov8.ipynb`: Notebook huấn luyện, đánh giá và suy luận.
+
+## Cách Chạy
+
+Chạy suy luận với thư mục ảnh:
 
 ```bash
-python main.py <đường-dẫn-thư-mục-chứa-hình-ảnh>
+python main.py <đường-dẫn-thư-mục-ảnh>
 ```
 
-## Công Cụ Sử Dụng
+Chạy suy luận với video:
 
-1. Python
-2. OpenCV - xử lý hình ảnh và video
-3. YOLOv8 - mô hình phát hiện đối tượng
-4. Supervision - trực quan hóa kết quả nhận diện và annotation
-5. Ultralytics - thư viện để sử dụng mô hình YOLO
+```bash
+python main.py <đường-dẫn-video>
+```
+
+Chạy web demo:
+
+```bash
+python app.py
+```
 
 ## Quy Trình Hoạt Động
 
-1. Nạp mô hình YOLOv8 đã được huấn luyện để phát hiện mũ bảo hộ.
-2. Đọc hình ảnh hoặc video đầu vào và thay đổi kích thước khung hình theo yêu cầu.
-3. Đưa dữ liệu đầu vào qua mô hình để lấy các đối tượng được phát hiện và tọa độ của chúng.
-4. Sử dụng thư viện Supervision để vẽ kết quả phát hiện lên hình ảnh.
-5. Lưu các ảnh đã được gán nhãn vào thư mục riêng.
-6. Trích xuất nhãn của các đối tượng từ kết quả YOLOv8.
-7. Đánh giá kết quả và tạo ma trận nhầm lẫn.
-8. Tính toán các chỉ số như độ chính xác và loss, sau đó vẽ biểu đồ.
-9. Lưu biểu đồ và tệp CSV chứa thông tin phát hiện vào thư mục kết quả.
+1. Nạp mô hình YOLOv8 đã huấn luyện từ thư mục `models/`.
+2. Đọc ảnh hoặc video đầu vào.
+3. Chạy suy luận để phát hiện các lớp như `helmet`, `head`, `person`.
+4. Vẽ bounding box và label lên ảnh hoặc khung hình video.
+5. Lưu kết quả trực quan hóa vào thư mục `Result/`.
+6. Xuất báo cáo CSV với trạng thái như `Helmet`, `No Helmet`, `Person Detected`.
 
-## Chỉ Số Đánh Giá
+## Đánh Giá Mô Hình
 
-![Accuracy](https://github.com/anhdungdev18/Helmet-detection-/blob/main/graph.png)
+Repo hiện lưu các ảnh minh họa kết quả đánh giá:
 
-## Ma Trận Nhầm Lẫn
+- `graph.png`: Biểu đồ metric/loss trong quá trình huấn luyện.
+- `cmatrix.png`: Ma trận nhầm lẫn của mô hình.
 
-Ma trận nhầm lẫn giúp đánh giá tổng quan hiệu năng của mô hình. Hình bên dưới là ma trận nhầm lẫn của mô hình phát hiện mũ bảo hộ:
+## Hạn Chế Và Hướng Phát Triển
 
-![cm](https://github.com/anhdungdev18/Helmet-detection-/blob/main/cmatrix.png)
-
-## Hạn Chế Và Hướng Cải Thiện
-
-1. Mô hình có thể chưa chính xác trong mọi tình huống và vẫn có khả năng xuất hiện false positive hoặc false negative. Có thể cải thiện bằng cách fine-tune trên tập dữ liệu lớn hơn và đa dạng hơn.
-2. Phiên bản hiện tại chỉ phát hiện mũ bảo hộ, nhưng có thể mở rộng để nhận diện thêm kính bảo hộ, găng tay hoặc các trang bị an toàn khác.
-3. Chương trình hiện tại chỉ hoạt động với hình ảnh và video, nhưng có thể phát triển thêm để hỗ trợ luồng camera trực tiếp.
-
-## Kết Luận
-
-Dự án cung cấp nền tảng cơ bản để phát hiện mũ bảo hộ trong hình ảnh và video bằng YOLO. Quá trình xử lý bao gồm nạp mô hình, đọc dữ liệu đầu vào, suy luận, trực quan hóa kết quả, kiểm tra xem người lao động có đội mũ hay không và lưu thông tin vào tệp CSV. Tuy vẫn còn khả năng cải thiện, dự án đã đáp ứng tốt mục tiêu nhận diện trang bị an toàn cơ bản.
+- Kết quả vẫn có thể bị ảnh hưởng bởi góc chụp, che khuất hoặc chất lượng hình ảnh.
+- Có thể mở rộng thêm các lớp PPE khác như kính bảo hộ, áo phản quang, găng tay.
+- Có thể tích hợp thêm luồng camera thời gian thực hoặc cơ chế cảnh báo.
 
 ## Kết Quả Mẫu
 
