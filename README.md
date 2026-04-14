@@ -2,7 +2,7 @@
 
 Dự án này được xây dựng để phát hiện mũ bảo hộ trong hình ảnh và video bằng mô hình YOLOv8. Hệ thống hỗ trợ xử lý theo lô, trực quan hóa kết quả bằng bounding box và xuất báo cáo CSV để phục vụ bài toán giám sát an toàn lao động.
 
-<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/allresults.jpeg" width="1000" height="700">
+<img src="https://github.com/anhdungdev18/Helmet-detection-/blob/main/pic1.jpeg" width="1000" height="700">
 
 ## Mục Tiêu Dự Án
 
