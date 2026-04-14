@@ -2,6 +2,8 @@ import cv2
 import os
 import csv
 
+SUPPORTED_IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
+
 
 def show_file_size(file):
     """
@@ -36,9 +38,14 @@ def imageLoader(folder_path):
             1. A list of all image paths in the folder.
             2. A list of all image names in the folder.
     """
-    # Get a list of all items in the folder
-    items = os.listdir(folder_path)
-    print(f"[!] Found {len(items)} images [!]")
+    # Get a list of supported image files in the folder
+    items = [
+        item
+        for item in sorted(os.listdir(folder_path))
+        if os.path.isfile(os.path.join(folder_path, item))
+        and os.path.splitext(item)[1].lower() in SUPPORTED_IMAGE_EXTENSIONS
+    ]
+    print(f"[!] Found {len(items)} supported images [!]")
 
     images_path_list = []
     # Loop through each item in the folder
@@ -86,8 +93,8 @@ def checkHeads(
     image_storage_folder,
 ):
     """
-    This function checks if the given list of labels contains the word "head". If it does, the function saves the
-    corresponding image to disk and adds a row to the result list indicating that no helmet was detected.
+    This function assigns an image-level status based on detected labels, saves the
+    annotated image, and appends the result to the CSV rows.
 
     Args:
         - labels (list): A list of labels detected in the image.
@@ -102,22 +109,27 @@ def checkHeads(
         list: A list containing the updated results.
     """
 
-    # Looping through the results of detections
-    if "head" in labels:
-        print("head found")
-        # Getting the image name and location
-        image_name = f"{image_name_list[i]}"
-        image_loc = os.path.join(f"{image_storage_folder}/", image_name)
-        # cv2.imwrite(image_loc, image, [cv2.IMWRITE_JPEG_QUALITY, 1])
-        cv2.imwrite(image_loc, image)
+    image_name = f"{image_name_list[i]}"
+    image_loc = os.path.join(image_storage_folder, image_name)
+    cv2.imwrite(image_loc, image)
 
-        # print("After Compression")
-        # show_file_size(image_loc)
+    img_loc = image_path_list[i]
 
-        img_loc = image_path_list[i]
+    has_head = "head" in labels
+    has_helmet = "helmet" in labels
+    has_person = "person" in labels
+
+    if has_head and not has_helmet:
         message = "No Helmet"
+    elif has_helmet and has_head:
+        message = "Helmet"
+    elif has_helmet:
+        message = "Helmet"
+    elif has_person:
+        message = "Person Detected"
+    else:
+        message = "No Detection"
 
-        # Generating the message to store in csv file
-        csv_result_msg_final.append([image_name, img_loc, message])
+    csv_result_msg_final.append([image_name, img_loc, message])
 
     return csv_result_msg_final
